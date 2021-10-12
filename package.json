@@ -1,0 +1,36 @@
+{
+  "name": "formulaone",
+  "version": "1.0.0",
+  "description": "Get all the formula statistics fast and easy",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/davidfrid02/formulaOne.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/davidfrid02/formulaOne/issues"
+  },
+  "homepage": "https://github.com/davidfrid02/formulaOne#readme",
+  "dependencies": {
+    "compression": "^1.7.4",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "helmet": "^4.6.0",
+    "lodash": "^4.17.21",
+    "morgan": "^1.10.0"
+  },
+  "prettier": {
+    "trailingComma": "es5",
+    "tabWidth": 4,
+    "printWidth": 120,
+    "semi": true,
+    "singleQuote": true
+  }
+}

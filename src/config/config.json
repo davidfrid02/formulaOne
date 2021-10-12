@@ -1,0 +1,20 @@
+{
+  "default": {
+    "port": 3000,
+    "baseUrl": "/api/v1"
+  },
+  "development": {
+    "db": {
+      "user": "user",
+      "password": "Aa123456",
+      "connectionString": "my-app-db-dev"
+    }
+  },
+  "production": {
+    "db": {
+      "user": "user",
+      "password": "Aa123456",
+      "connectionString": "my-app-db-dev"
+    }
+  }
+}
