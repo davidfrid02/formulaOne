@@ -5,16 +5,17 @@
   },
   "development": {
     "db": {
+      "host": "localhost",
       "user": "user",
       "password": "Aa123456",
-      "connectionString": "my-app-db-dev"
+      "database": "FormulaOne"
     }
   },
   "production": {
     "db": {
       "user": "user",
       "password": "Aa123456",
-      "connectionString": "my-app-db-dev"
+      "database": "FormulaOne"
     }
   }
 }
