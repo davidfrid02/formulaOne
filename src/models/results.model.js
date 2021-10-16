@@ -16,6 +16,9 @@ module.exports = (sequelize, Sequelize) => {
             number: {
                 type: Sequelize.INTEGER,
             },
+            points: {
+                type: Sequelize.INTEGER,
+            },
             position: {
                 type: Sequelize.INTEGER,
             },

@@ -13,6 +13,9 @@ module.exports = (sequelize, Sequelize) => {
             driverId: {
                 type: Sequelize.INTEGER,
             },
+            points: {
+                type: Sequelize.INTEGER,
+            },
             wins: {
                 type: Sequelize.INTEGER,
             },

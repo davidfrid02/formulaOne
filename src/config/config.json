@@ -1,18 +1,12 @@
 {
   "default": {
     "port": 3000,
-    "baseUrl": "/api/v1"
+    "baseUrl": "/api/v1",
+    "numberOfDrivers": 3
   },
   "development": {
     "db": {
       "host": "localhost",
-      "user": "user",
-      "password": "Aa123456",
-      "database": "FormulaOne"
-    }
-  },
-  "production": {
-    "db": {
       "user": "user",
       "password": "Aa123456",
       "database": "FormulaOne"

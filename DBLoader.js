@@ -1,8 +1,6 @@
 const fs = require('fs');
 const csv = require('fast-csv');
 const db = require('./src/models');
-const { resolve } = require('path');
-const { reject } = require('lodash');
 
 const init = async () => {
     try {
@@ -63,6 +61,7 @@ const driverStangingObjectCreator = (row) => {
         id: Number(row.driverStandingsId),
         raceId: Number(row.raceId),
         driverId: Number(row.driverId),
+        points: Number(row.points),
         wins: Number(row.wins),
     };
 };
@@ -104,6 +103,7 @@ const resultsObjectCreator = (row) => {
         raceId: Number(row.raceId),
         driverId: Number(row.driverId),
         number: row.number !== '\\N' ? Number(row.number) : -1,
+        points: Number(row.points),
         position: row.position !== '\\N' ? Number(row.position) : -1,
         laps: row.laps !== '\\N' ? Number(row.laps) : -1,
         time: row.time,
@@ -114,8 +114,16 @@ const resultsObjectCreator = (row) => {
     };
 };
 
+const circuitsObjectCreator = (row) => {
+    return {
+        id: Number(row.circuitId),
+        name: row.name,
+    };
+};
+
 (async () => {
     try {
+        console.log('Starting...')
         await init();
         await Promise.all([
             readCSVAndInsertToDB('drivers', driverObjectCreator),
@@ -124,6 +132,7 @@ const resultsObjectCreator = (row) => {
             readCSVAndInsertToDB('lap_times', lapTimesObjectCreator),
             readCSVAndInsertToDB('pit_stops', pitStopsObjectCreator),
             readCSVAndInsertToDB('results', resultsObjectCreator),
+            readCSVAndInsertToDB('circuits', circuitsObjectCreator),
         ]);
         console.log('Finished loading successfully :-)');
     } catch (error) {
