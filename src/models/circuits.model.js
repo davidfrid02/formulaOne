@@ -9,9 +9,9 @@ module.exports = (sequelize, Sequelize) => {
             },
             name: {
                 type: Sequelize.STRING,
-            }
+            },
         },
-        { indexes: [{ unique: true, fields: ['id'] }] }
+        { indexes: [{ unique: true, fields: ['id'] }], timestamps: false }
     );
 
     return circuits;

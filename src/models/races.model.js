@@ -10,11 +10,14 @@ module.exports = (sequelize, Sequelize) => {
             year: {
                 type: Sequelize.INTEGER,
             },
+            circuitId: {
+                type: Sequelize.INTEGER,
+            },
             name: {
                 type: Sequelize.STRING(50),
             },
         },
-        { indexes: [{ unique: true, fields: ['id'] }] }
+        { indexes: [{ unique: true, fields: ['id'] }], timestamps: false }
     );
 
     return races;

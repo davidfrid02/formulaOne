@@ -26,7 +26,7 @@ module.exports = (sequelize, Sequelize) => {
                 type: Sequelize.STRING,
             },
         },
-        { indexes: [{ unique: true, fields: ['id'] }] }
+        { indexes: [{ unique: true, fields: ['id'] }], timestamps: false }
     );
 
     return drivers;

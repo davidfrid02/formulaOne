@@ -20,7 +20,7 @@ module.exports = (sequelize, Sequelize) => {
                 type: Sequelize.INTEGER,
             },
         },
-        { indexes: [{ unique: true, fields: ['id'] }] }
+        { indexes: [{ unique: true, fields: ['id'] }], timestamps: false }
     );
 
     return driverStandings;

@@ -41,7 +41,7 @@ module.exports = (sequelize, Sequelize) => {
                 type: Sequelize.STRING(7),
             },
         },
-        { indexes: [{ unique: true, fields: ['id'] }] }
+        { indexes: [{ unique: true, fields: ['id'] }], timestamps: false }
     );
 
     return results;

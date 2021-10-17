@@ -70,6 +70,7 @@ const racesObjectCreator = (row) => {
     return {
         id: Number(row.raceId),
         year: Number(row.year),
+        circuitId: Number(row.circuitId),
         name: row.name,
     };
 };
@@ -78,8 +79,6 @@ const lapTimesObjectCreator = (row) => {
     return {
         raceId: Number(row.raceId),
         driverId: Number(row.driverId),
-        lap: Number(row.lap),
-        position: Number(row.position),
         time: row.time,
         milliseconds: Number(row.milliseconds),
     };
@@ -89,9 +88,6 @@ const pitStopsObjectCreator = (row) => {
     return {
         raceId: Number(row.raceId),
         driverId: Number(row.driverId),
-        stop: Number(row.stop),
-        lap: Number(row.lap),
-        time: row.time,
         duration: row.duration,
         milliseconds: Number(row.milliseconds),
     };
@@ -105,12 +101,7 @@ const resultsObjectCreator = (row) => {
         number: row.number !== '\\N' ? Number(row.number) : -1,
         points: Number(row.points),
         position: row.position !== '\\N' ? Number(row.position) : -1,
-        laps: row.laps !== '\\N' ? Number(row.laps) : -1,
-        time: row.time,
-        milliseconds: row.milliseconds !== '\\N' ? Number(row.milliseconds) : -1,
-        fastestLap: row.fastestLap !== '\\N' ? Number(row.fastestLap) : -1,
         fastestLapTime: row.fastestLapTime,
-        fastestLapSpeed: row.fastestLapSpeed,
     };
 };
 
