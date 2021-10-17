@@ -5,10 +5,10 @@ const sequilize = require('../models').sequelize;
 module.exports = {
     allTimeRanking: async () => {
         try {
-            let seasons = [];
+            const seasons = [];
             const query = createSeasonAllTimeRankingQuery();
             if (query) {
-                let results = await sequilize.query(query, { type: sequilize.QueryTypes.SELECT });
+                const results = await sequilize.query(query, { bind:[numberOfDrivers], type: sequilize.QueryTypes.SELECT });
                 if (results) {
                     for (let i = 0; i < results.length; i += numberOfDrivers) {
                         const season = getSeasonItem(results.slice(i, i + numberOfDrivers));
@@ -40,10 +40,21 @@ const getSeasonItem = (seasonTopDrivers) => {
 
 const createSeasonAllTimeRankingQuery = () => {
     return `
-	SELECT maxPointsByYear.year, maxPointsByYear.max_points,  drivers.number, drivers.forename, drivers.surname, drivers.nationality, drivers.dob as dateOfBirth, drivers.url
+	SELECT 
+        maxPointsByYear.year, 
+        maxPointsByYear.maxPoints,
+        drivers.number, 
+        drivers.forename,
+        drivers.surname,
+        drivers.nationality, 
+        drivers.dob as dateOfBirth,
+        drivers.url
 	FROM
 	(
-		SELECT distinct races.year, MAX(points) as max_points, driver_standings."driverId",
+		SELECT 
+            distinct races.year, 
+            MAX(points) as maxPoints, 
+            driver_standings."driverId",
 		ROW_NUMBER () OVER (
 			PARTITION BY races.year
 			ORDER BY MAX(points) DESC
@@ -51,8 +62,8 @@ const createSeasonAllTimeRankingQuery = () => {
 		FROM driver_standings
 		JOIN races on races.id = driver_standings."raceId"
 		GROUP BY races.year, driver_standings."driverId"
-		ORDER BY races.year, max_points DESC
+		ORDER BY races.year, maxPoints DESC
 	) as maxPointsByYear	
 	JOIN drivers on drivers.id = maxPointsByYear."driverId"
-	WHERE maxPointsByYear."row_number" <= ${numberOfDrivers}`;
+	WHERE maxPointsByYear."row_number" <= $1`;
 };

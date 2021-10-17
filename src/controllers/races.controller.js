@@ -8,7 +8,7 @@ module.exports = {
             if (request.params.driverId) {
                 let paramType = 'id';
                 const castedDriverId = Number(request.params.driverId);
-                if (castedDriverId === NaN) {
+                if (isNaN(castedDriverId)) {
                     paramType = 'name';
                 }
                 result = await racesService.getRaces(request.params.driverId, paramType);

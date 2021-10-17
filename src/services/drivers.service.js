@@ -6,9 +6,9 @@ module.exports = {
         try {
             let drivers = [];
             if (season) {
-                const query = createDriversWinsBySeasonQuery(season);
+                const query = createDriversWinsBySeasonQuery();
                 if (query) {
-                    drivers = await sequilize.query(query, { type: sequilize.QueryTypes.SELECT });
+                    drivers = await sequilize.query(query, { bind: [season], type: sequilize.QueryTypes.SELECT });
                 } else {
                     throw { message: 'Failed query creation!' };
                 }
@@ -22,25 +22,27 @@ module.exports = {
     },
 };
 
-const createDriversWinsBySeasonQuery = (season) => {
-    let query;
-    if (season) {
-        query = `
-		SELECT drivers.id as driverId, winsByYear.max_wins as wins, drivers.number, drivers.forename, drivers.surname, drivers.nationality, drivers.dob as dateOfBirth, drivers.url
-		FROM drivers
-		JOIN 
-			(
-				SELECT distinct "driverId", MAX(wins) as max_wins
-				FROM driver_standings
-				JOIN 
-				(
-					SELECT *
-					FROM races 
-					WHERE year = ${season}
-				) as raceYear on raceYear.id = driver_standings."raceId"
-				GROUP BY "driverId"
-			) as winsByYear on drivers.id = winsByYear."driverId"
-		ORDER BY max_wins DESC`;
-    }
-    return query;
+const createDriversWinsBySeasonQuery = () => {
+    return `		
+	SELECT 
+        drivers.id as driverId, 
+        winsByYear."maxWins", 
+        drivers.number, 
+        drivers.forename, 
+        drivers.surname, 
+        drivers.nationality, 
+        drivers.dob as dateOfBirth, 
+        drivers.url
+    FROM
+        (
+            SELECT 
+                distinct driver_standings."driverId", 
+                MAX(wins) as "maxWins"
+            FROM races 
+            JOIN driver_standings on driver_standings."raceId" = races.id
+            WHERE races.year = $1
+            GROUP BY "driverId"
+        ) as winsByYear 
+        JOIN drivers on drivers.id = winsByYear."driverId"
+        ORDER BY "maxWins" DESC`;
 };

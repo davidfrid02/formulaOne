@@ -72,6 +72,7 @@ const racesObjectCreator = (row) => {
         year: Number(row.year),
         circuitId: Number(row.circuitId),
         name: row.name,
+        date: row.date
     };
 };
 

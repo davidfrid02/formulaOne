@@ -16,6 +16,9 @@ module.exports = (sequelize, Sequelize) => {
             name: {
                 type: Sequelize.STRING(50),
             },
+            date: {
+                type: Sequelize.DATE,
+            },
         },
         { indexes: [{ unique: true, fields: ['id'] }], timestamps: false }
     );
