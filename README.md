@@ -31,7 +31,7 @@ $ npm install
 $ npm run load
 ```
 
-   Start the server
+   Start the server:
 
 ```bash
 $ npm run start

@@ -5,13 +5,13 @@ module.exports = {
     getRaces: async (request, response) => {
         try {
             let result = {};
-            if (request.params.driverId) {
+            if (request.params.driverParam) {
                 let paramType = 'id';
-                const castedDriverId = Number(request.params.driverId);
+                const castedDriverId = Number(request.params.driverParam);
                 if (isNaN(castedDriverId)) {
                     paramType = 'name';
                 }
-                result = await racesService.getRaces(request.params.driverId, paramType);
+                result = await racesService.getRaces(request.params.driverParam, paramType);
             } else {
                 throw { message: 'Missing driver parameter' };
             }
