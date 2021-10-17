@@ -25,8 +25,7 @@ $ cd formulaOne
 $ npm install
 ```
 
-  Create a database and a user in PostgreSQL and then
-  Load the run the following command to load csv data to DB:
+  Create a database and a user in PostgreSQL and then run the following command to load csv data to DB:
 
 ```bash
 $ npm run load
