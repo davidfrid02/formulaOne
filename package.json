@@ -1,7 +1,7 @@
 {
   "name": "formulaone",
   "version": "1.0.0",
-  "description": "Get all the formula statistics fast and easy",
+  "description": "Get all the formula one statistics fast and easy.",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
