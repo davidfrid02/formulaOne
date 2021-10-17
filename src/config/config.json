@@ -2,7 +2,8 @@
   "default": {
     "port": 3000,
     "baseUrl": "/api/v1",
-    "numberOfDrivers": 3
+    "numberOfDrivers": 3,
+    "cacheTTL": 3600
   },
   "development": {
     "db": {

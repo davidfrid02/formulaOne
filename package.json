@@ -27,6 +27,7 @@
     "helmet": "^4.6.0",
     "lodash": "^4.17.21",
     "morgan": "^1.10.0",
+    "node-cache": "^5.1.2",
     "pg": "^8.7.1",
     "pg-hstore": "^2.3.4",
     "sequelize": "^6.7.0"

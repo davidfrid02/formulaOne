@@ -1,21 +1,28 @@
 const utils = require('../utils');
+const config = require('../config');
+const NodeCache = require('node-cache');
+const driversCache = new NodeCache({ stdTTL: config.cacheTTL });
 const sequilize = require('../models').sequelize;
 
 module.exports = {
     getDrivers: async (season) => {
         try {
-            let drivers = [];
+            let drivers;
             if (season) {
-                const query = createDriversWinsBySeasonQuery();
-                if (query) {
-                    drivers = await sequilize.query(query, { bind: [season], type: sequilize.QueryTypes.SELECT });
-                } else {
-                    throw { message: 'Failed query creation!' };
+                drivers = driversCache.get(season);
+                if (!drivers) {
+                    const query = createDriversWinsBySeasonQuery();
+                    if (query) {
+                        drivers = await sequilize.query(query, { bind: [season], type: sequilize.QueryTypes.SELECT });
+                        driversCache.set(season, drivers);
+                    } else {
+                        throw { message: 'Failed query creation!' };
+                    }
                 }
             } else {
                 throw { message: 'Missing season paramter' };
             }
-            return drivers;
+            return drivers || [];
         } catch (error) {
             throw utils.errorMessage({}, error.message, 'drivers.service.js', 'getDrivers');
         }
