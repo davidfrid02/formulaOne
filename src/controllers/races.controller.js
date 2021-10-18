@@ -17,7 +17,7 @@ module.exports = {
             }
             response.status(200).json(result);
         } catch (error) {
-            response.status(404).json(utils.errorMessage(error, error.message, 'races.controllers.js', 'getRaces'));
+            response.status(404).json(utils.errorMessage(error, error.message, 'races.controller.js', 'getRaces'));
         }
     },
 
@@ -33,7 +33,7 @@ module.exports = {
         } catch (error) {
             response
                 .status(404)
-                .json(utils.errorMessage(error, error.message, 'drivers.controllers.js', 'getDriversBySeason'));
+                .json(utils.errorMessage(error, error.message, 'drivers.controller.js', 'getDriversBySeason'));
         }
     },
 };

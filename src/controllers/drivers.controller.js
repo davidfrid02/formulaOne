@@ -12,7 +12,7 @@ module.exports = {
             }
             response.status(200).json(drivers);
         } catch (error) {
-            response.status(404).json(utils.errorMessage(error, error.message, 'drivers.controllers.js', 'getDriversBySeason'));
+            response.status(404).json(utils.errorMessage(error, error.message, 'drivers.controller.js', 'getDriversBySeason'));
         }
     },
 };

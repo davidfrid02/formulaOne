@@ -21,6 +21,7 @@ const lapTimes = require('./lapTimes.model.js')(sequelize, Sequelize);
 const pitStops = require('./pitStops.model.js')(sequelize, Sequelize);
 const results = require('./results.model.js')(sequelize, Sequelize);
 const circuits = require('./circuits.model.js')(sequelize, Sequelize);
+const users = require('./users.model.js')(sequelize, Sequelize);
 
 const db = {
     Sequelize: Sequelize,
@@ -32,6 +33,7 @@ const db = {
     pit_stops: pitStops,
     results: results,
     circuits: circuits,
+    users: users
 };
 
 module.exports = db;
