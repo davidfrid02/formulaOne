@@ -1,3 +1,5 @@
+# FormulaOne
+
 ## Prerequisites
 
 Make sure you have installed all of the following prerequisites on your development machine:
