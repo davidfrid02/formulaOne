@@ -8,7 +8,7 @@ Make sure you have installed all of the following prerequisites on your developm
 -   Node.js - [Download & Install Node.js](https://nodejs.org/en/download/) and the npm package manager.
 -   PostgreSQL - [Download & Install PostgreSQL](https://www.postgresql.org/download/)
 
-## Quick Start
+## Installation
 
 Run git clone to this project
 
@@ -69,7 +69,7 @@ RESPONSE:
 ```
 
 
-## ENDPOINTS
+## Usage
 GET - http://localhost:3000/health - Check if the server is up.
 
 Before these endpoints an identification must be added in the HEADER of the request
