@@ -72,10 +72,10 @@ GET - http://localhost:3000/health - Check if the server is up.
 
 Before these endpoints an identification must be added in the HEADER of the request
 
+```
 KEY - access-token
-
 VALUE - token from login response
-
+```
 1. GET - http://localhost:3000/api/v1/seasons/:season/drivers - returns a list of drivers sorted by the wins in the requested season
 
 EXAMPLE:
