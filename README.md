@@ -42,8 +42,8 @@ $ npm run start
 
 1) POST - http://localhost:3000/api/v1/register
 ```bash
-  BODY:
-  {
+BODY:
+{
   "userName": "xxxx",
   "password": "yyyy",
 }
@@ -55,20 +55,19 @@ RESPONSE:
 
 2) POST - http://localhost:3000/api/v1/login
 ```bash
-  BODY:
-  {
+BODY:
+{
   "userName": "xxxx",
   "password": "yyyy",
-  }
-  RESPONSE:
-  {
-    "token": "zzzzzzzz"
-  }
+}
+RESPONSE:
+{
+  "token": "zzzzzzzz"
+}
 ```
 
 
 ## ENDPOINTS
-isAlive:
 GET - http://localhost:3000/health - Check if the server is up.
 
 Before these endpoints an identification must be added in the HEADER of the request
