@@ -71,20 +71,25 @@ RESPONSE:
 GET - http://localhost:3000/health - Check if the server is up.
 
 Before these endpoints an identification must be added in the HEADER of the request
+
 KEY - access-token
+
 VALUE - token from login response
 
 1. GET - http://localhost:3000/api/v1/seasons/:season/drivers - returns a list of drivers sorted by the wins in the requested season
+
 EXAMPLE:
 ```
 http://localhost:3000/api/v1/seasons/2002/drivers
 ```
 2. GET - http://localhost:3000/api/v1/seasons?allTimeRanking=true - returns a list of seasons with the top 3 drivers in each season.
+
 EXAMPLE:
 ```
 http://localhost:3000/api/v1/seasons?allTimeRanking=true
 ```
 3. GET - http://localhost:3000/api/v1/drivers/:driverParam/races - Get a specific driver by id or name(forename surname with space between) with all of his races sorted by date from newest to the oldest.
+
 EXAMPLE:
 ```
 http://localhost:3000/api/v1/drivers/30/races
