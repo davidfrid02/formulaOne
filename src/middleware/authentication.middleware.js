@@ -16,7 +16,7 @@ module.exports = {
         } catch (error) {
             response
                 .status(401)
-                .json(utils.errorMessage(error, error.message, 'authentication.middleware.js', 'login'));
+                .json(utils.errorMessage(error, error.message, 'authentication.middleware.js', 'authenticate'));
         }
     },
 };

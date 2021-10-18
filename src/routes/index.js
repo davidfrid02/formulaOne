@@ -17,8 +17,8 @@ router.get(`${config.baseUrl}/drivers/:driverParam/races`, authentication.authen
 router.post(`${config.baseUrl}/register`, authenticationController.register);
 router.post(`${config.baseUrl}/login`, authenticationController.login);
 
-router.get('/health', (req, res) => {
-    res.status(200).send('OK');
+router.get('/health', (request, response) => {
+    response.status(200).send('OK');
 });
 
 module.exports = router;

@@ -2,14 +2,6 @@ const fs = require('fs');
 const csv = require('fast-csv');
 const db = require('./src/models');
 
-const init = async () => {
-    try {
-        await db.sequelize.sync({ force: true });
-    } catch (error) {
-        throw error;
-    }
-};
-
 const readCSVAndInsertToDB = (tableName, objectCreator) => {
     return new Promise((resolve, reject) => {
         try {
@@ -72,7 +64,7 @@ const racesObjectCreator = (row) => {
         year: Number(row.year),
         circuitId: Number(row.circuitId),
         name: row.name,
-        date: row.date
+        date: row.date,
     };
 };
 
@@ -115,8 +107,8 @@ const circuitsObjectCreator = (row) => {
 
 (async () => {
     try {
-        console.log('Starting...')
-        await init();
+        console.log('Starting...');
+        await db.sequelize.sync({ force: true });
         await Promise.all([
             readCSVAndInsertToDB('drivers', driverObjectCreator),
             readCSVAndInsertToDB('driver_standings', driverStangingObjectCreator),

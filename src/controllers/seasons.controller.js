@@ -10,7 +10,7 @@ module.exports = {
             } 
             response.status(200).json(seasons);
         } catch (error) {
-            response.status(404).json(utils.errorMessage(error, error.message, 'seasons.controller.js', 'getAllTimeDrivers'));
+            response.status(404).json(utils.errorMessage(error, error.message, 'seasons.controller.js', 'getAllTimeRanking'));
         }
     },
 };
